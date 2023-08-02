@@ -1,0 +1,193 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Charts</title>
+        {% bootstrap_css %}
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+
+            <!--
+                Navbar
+            -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">Painel de vagas</div>
+                </a>
+    
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dashboard_empresa' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                            <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+                          </svg>
+                        <span>Dashboard</span></a>
+                </li>
+    
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+    
+                
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+    
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Addons
+                </div>
+    
+                
+                
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pie-chart-fill" viewBox="0 0 16 16">
+                            <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+                          </svg>
+                        <span>Charts</span></a>
+                </li>
+    
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+                <hr class="sidebar-divider d-none d-md-block">
+                <div class="sidebar-heading">
+                    Sair
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                          </svg>
+                        <span>Sair</span>
+                    
+                    </a>
+                </li>
+                
+            </ul>
+            <div id="content" class="container-fluid ">
+
+                <nav class="navbar navbar-expand navbar-light bg-light shadow ">
+                    <div class="container-fluid">
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                          </svg>
+                        <span> {{ usuario }} </span></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                <!-- End of Topbar -->
+            <div class="container-fluid mt-4">
+            
+                {% bootstrap_messages %}
+                <h4 class="text-center mt-5">Gráfico de vagas criadas por Mês</h4>
+                <canvas id="vagasChart" width="300" height="100"></canvas>
+                <h4 class="text-center mt-5">Gráfico de candidatos criados por Mês</h4>
+                <canvas id="candidatosChart" width="300" height="100"></canvas>
+            
+                
+            </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+    let vagas_data = JSON.parse('{{ vagas_data | escapejs }}');
+    let candidatos_data = JSON.parse('{{ candidatos_data | escapejs }}');
+    let meses_nomes = JSON.parse('{{ meses_nomes | escapejs }}');
+
+    function fillDataWithZeros(data) {
+        let newData = [];
+        for (let i = 1; i <= 12; i++) {
+            let item = data.find(item => item.mes_cadastro === i);
+            newData.push(item ? item.contagem : 0);
+        }
+        return newData;
+    }
+
+    let meses = Object.values(meses_nomes);
+
+    let contagens_vagas = fillDataWithZeros(vagas_data);
+    let contagens_candidatos = fillDataWithZeros(candidatos_data);
+
+    let ctx_vagas = document.getElementById('vagasChart').getContext('2d');
+    let vagasChart = new Chart(ctx_vagas, {
+        type: 'bar',
+        data: {
+            labels: meses,
+            datasets: [{
+                label: 'Vagas criadas por mês',
+                data: contagens_vagas,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1,
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+
+    let ctx_candidatos = document.getElementById('candidatosChart').getContext('2d');
+    let candidatosChart = new Chart(ctx_candidatos, {
+        type: 'bar',
+        data: {
+            labels: meses,
+            datasets: [{
+                label: 'Candidatos por mês',
+                data: contagens_candidatos,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1,
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+</script>
+    {% bootstrap_javascript jquery='full' %}
+</body>

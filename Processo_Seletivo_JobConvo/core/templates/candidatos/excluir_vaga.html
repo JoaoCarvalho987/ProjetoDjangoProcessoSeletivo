@@ -1,0 +1,32 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Excluir vaga</title>
+        {% bootstrap_css %}
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <center>
+                
+                {% block content %}
+                <h1>Excluir Vaga</h1>
+                <p>Tem certeza que deseja excluir a vaga "{{ vaga.nome_vaga }}"?</p>
+
+                <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Confirmar exclusão</button><br>
+                <a href="{% url 'dashboard_empresa' %}">Cancelar</a>
+                </form>
+                {% endblock %}
+            </center>
+        </div>
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>

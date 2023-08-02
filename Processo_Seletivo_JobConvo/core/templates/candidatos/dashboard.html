@@ -1,0 +1,218 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        {% bootstrap_css %}
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+
+            <!--
+                Navbar
+            -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">Painel de vagas</div>
+                </a>
+    
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dashboard_candidato' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                            <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+                          </svg>
+                        <span>Dashboard</span></a>
+                </li>
+    
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+    
+                
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+    
+                <div class="sidebar-heading">
+                    Sair
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                          </svg>
+                        <span>Sair</span>
+                    
+                    </a>
+                </li>
+                
+            </ul>
+            <div id="content" class="container-fluid ">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-light shadow ">
+                    <div class="container-fluid">
+                      <!-- Brand/logo -->
+                      <!-- Links da navbar -->
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                          </svg>
+                        <span> {{ usuario }} </span></a>
+                        </li>
+                        <!-- Adicione mais links da navbar aqui -->
+                      </ul>
+                    </div>
+                  </nav>
+                <!-- End of Topbar -->
+            <div class="container-fluid mt-4">
+            
+                {% bootstrap_messages %}
+                <center>
+                    <h1>Vagas Disponíveis </h1> 
+                    <table class="table table-dark"> 
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Faixa Salarial</th>
+                                <th scope="col">Requisitos</th>
+                                <th scope="col">Escolaridade</th>
+                                <th scope="col">Empresa</th>
+                                <th scope="col">Candidatar-se</th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                                {% for vaga in vagas %}
+                                    <tr>  
+                                        <td>
+                                            {{ vaga.nome_vaga }}
+                                        </td>  
+                                        <td>
+                                            {{ vaga.faixa_salarial }}
+                                        </td> 
+                                        <td>
+                                            {{ vaga.requisitos }}
+                                        </td>  
+                                        <td>
+                                            {{ vaga.escolaridade }}
+                                        </td>  
+                                        <td>
+                                            {% get_empresa_names vaga.empresa_id %}
+                                        </td> 
+                                        <td>
+                                            <form action="{% url 'criar_candidatura' vaga.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="vaga_id" value="{{ vaga.id }}">
+                                                <button type="submit" class="btn btn-outline-dark border p-1">Candidatar-se</button>
+                                            </form>
+                                        </td> 
+                                    </tr>
+                                    <div class="modal fade bd-example-modal-lg show"  id="modal{{vaga.id}}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="container text-center">
+                                                        <h3>Requisitos</h3>
+                                                    </div>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+    
+                                                <div class="modal-body" id="dynamic-content">
+                                                    <div class="container text-center">
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                    
+                                    
+                                    
+                                {% endfor %}
+                        </tbody>    
+                    </table><br>
+                    <h2>Vagas em que você está inscrito</h2>
+
+                    
+                    <table class="table table-dark"> 
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Empresa</th>
+                                <th scope="col">Faixa salarial</th>
+                                <th scope="col">Escolaridade mínima</th>
+                                <th scope="col">Requisitos</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            {% get_vagas_do_usuario user.id as vagas_do_usuario %}
+                                {% for vaga in vagas_do_usuario  %}
+                                    <tr>  
+                                        <td>
+                                            {{ vaga.nome_vaga }}
+                                        </td>  
+                                        <td>
+                                            {% get_empresa_names vaga.empresa_id %}
+                                        </td> 
+                                        <td>
+                                            {{ vaga.faixa_salarial }}
+                                        </td> 
+                                        <td>
+                                            {{ vaga.escolaridade }}
+                                        </td> 
+                                        <td>
+                                            {{ vaga.requisitos }}
+                                        </td> 
+                                        <td>
+                                            <form action="{% url 'deletar_vaga_candidato' vaga.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-outline-light border p-1">Excluir Candidatura</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+
+                                    
+                                    
+                                    
+                                {% endfor %}
+                        </tbody>    
+                    </table><br>
+
+                    
+                </center>
+        </div>
+    </div>
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>
