@@ -91,6 +91,12 @@ O banco de dados está configurado para o tipo mysql, entretanto, se o domínio 
 de sql, você pode alterar segundo a sua necessidade. Por exemplo, estou mudando o DATABASES abaixo 
 para que a aplicação funcione na heroku.
 
+
+DATABASES ={
+    'default': dj_database_url.config()
+}
+"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -101,11 +107,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-"""
-DATABASES ={
-    'default': dj_database_url.config()
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
